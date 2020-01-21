@@ -1,0 +1,25 @@
+server:
+  port: ${port}
+spring:
+  cloud:
+    stream:
+      bindings:
+        websocketMessageIn:
+          destination: websocketMessage
+          binder: rabbit
+          content-type: application/json
+        websocketMessageOut:
+          destination: websocketMessage
+          binder: rabbit
+          content-type: application/json
+      binders:
+        rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                username: admin
+                password: admin
+                virtual-host: /
+
